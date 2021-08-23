@@ -1,0 +1,11 @@
+global:
+  config:
+    as: 4200000000
+    router-id: 10.0.0.3
+neighbors:
+  - config:
+      neighbor-address: 192.168.22.2
+      peer-as: 4200000000
+    afi-safis:
+      - config:
+          afi-safi-name: ipv4-unicast

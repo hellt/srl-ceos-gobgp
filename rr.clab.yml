@@ -1,0 +1,21 @@
+name: rr
+
+topology:
+  nodes:
+    srlinux:
+      kind: srl
+      image: ghcr.io/nokia/srlinux
+      startup-config: srlinux.startup.json
+    ceos:
+      kind: ceos
+      image: ceos:4.25.0F
+      startup-config: ceos.startup.cfg
+    gobgp:
+      kind: linux
+      image: ghcr.io/hellt/network-multitool
+      binds:
+        - gobgp:/gobgp
+
+  links:
+    - endpoints: ["srlinux:e1-1", "ceos:eth1"]
+    - endpoints: ["ceos:eth2", "gobgp:eth1"]
